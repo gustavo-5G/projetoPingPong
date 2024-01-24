@@ -1,0 +1,46 @@
+.heading button {
+    float: right;
+    border: 1px solid black;
+}
+
+.heading {
+    width: 100%;
+    text-align: left;
+}
+
+.heading h3 {
+    display: inline;
+}
+
+#start,#status,#restart {
+    font-size: 22px;
+}
+
+h4 {
+    color: white;
+    background-color: rgb(8, 70, 255);
+    line-height: 2;
+}
+
+.instructionImage {
+    display: inline-block;
+    width: 45%;
+}
+
+.modal-dialog {
+    width: 70%;
+}
+ 
+.modal-body{
+    text-align: left;
+    font-size: 20px;
+}
+
+canvas{
+    border: 3px solid black;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px black;
+}
+
+
+
