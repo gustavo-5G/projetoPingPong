@@ -12,11 +12,12 @@ paddle2Height = 70;
 score1 = 0;
 score2 = 0;
 
-
 playerscore = 0;
 pcscore = 0;
 
 audio1 = '';
+
+statusPlay = '';
 
 
 //Coordenadas x, y, raio, velocidade em x e velocidade em y
@@ -30,6 +31,10 @@ ball = {
 
 function setup() {
   canvas = createCanvas(700, 550);
+}
+
+function start() {
+  statusPlay = true
 }
 
 
@@ -62,31 +67,26 @@ function draw() {
   paddle2y = ball.y - paddle2Height / 2;
   rect(paddle2Y, paddle2y, paddle2, paddle2Height, 100);
 
-  //Chamar a função midline()
-  midline();
+  if (statusPlay == true) {
+    //Chamar a função midline()
+    midline();
 
-  //Chamar a função drawScore() 
-  drawScore();
+    //Chamar a função drawScore() 
+    drawScore();
 
-  //Chamar a função models()  
-  models();
+    //Chamar a função models()  
+    models();
 
-  //Chamar a função move() (muito importante para o jogo)
-  move();
+    //Chamar a função move() (muito importante para o jogo)
+    move();
+  }
 }
 
 
 
 //Função reset() para quando a bola não colidir com a raquete
 function reset() {
-  if (pcscore >= 6) {
-    ball.r = 50
-    ball.x = width / 2 + 100,
-      ball.y = height / 2 + 100,
-      ball.dx = 15;
-    ball.dy = 15;
-  }
-  if (playerscore >= 11) {
+  if (pcscore >= 6 || playerscore >= 11) {
     ball.r = 50
     ball.x = width / 2 + 100,
       ball.y = height / 2 + 100,
@@ -157,7 +157,7 @@ function move() {
     stroke("white");
     textSize(25)
     text("Game Over! ☹☹", width / 2, height / 2);
-    text("Recarregue a página!", width / 2, height / 2 + 30)
+    text("Clique em recomeçar !", width / 2, height / 2 + 30)
     noLoop();
     pcscore = 0;
   }
@@ -186,4 +186,13 @@ function paddleInCanvas() {
   if (mouseY < 0) {
     mouseY = 0;
   }
+}
+
+function restart() {
+  loop()
+  pcscore = 0
+  playerscore = 0
+  ball.r = 20
+  ball.dx = 10;
+  ball.dy = 10;
 }
